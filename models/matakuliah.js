@@ -2,12 +2,11 @@
 module.exports = (sequelize, DataTypes) => {
   var Matakuliah = sequelize.define('Matakuliah', {
     mk_name: DataTypes.STRING,
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
-  });
+  })
+
+  Matakuliah.associate = model =>{
+    Matakuliah.hasMany(model.MK_Mahasiswa, {foreignKey : 'id_mk'})
+    Matakuliah.belongsToMany(model.Mahasiswa, {through : 'MK_Mahasiswa', foreignKey : 'id_mk'})
+  }
   return Matakuliah;
 };
