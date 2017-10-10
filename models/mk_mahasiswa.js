@@ -4,12 +4,11 @@ module.exports = (sequelize, DataTypes) => {
     id_mk: DataTypes.INTEGER,
     id_mahasiswa: DataTypes.INTEGER,
     status: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
-  });
+  })
+
+  MK_Mahasiswa.associate = model =>{
+    MK_Mahasiswa.belongsTo(model.Matakuliah, {foreignKey : 'id_mk'})
+    MK_Mahasiswa.belongsTo(model.Mahasiswa, {foreignKey : 'id_mahasiswa'})
+  }
   return MK_Mahasiswa;
 };
