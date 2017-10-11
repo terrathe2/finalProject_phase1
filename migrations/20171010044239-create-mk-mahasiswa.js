@@ -27,6 +27,10 @@ module.exports = {
       status: {
         type: Sequelize.STRING
       },
+      courseDate: {
+        type: 'TIMESTAMP',
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

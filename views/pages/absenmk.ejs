@@ -9,17 +9,67 @@
 		 <% include ../partials/header %>
 	    <div class="row">
 	    <h1><%=id_dosen%></h1>
-	    
-	    <form action="/selectSchedule/<%=result_schedule[0].id_mk%>" method="post">
+
+	    <form action="/absenmk/selectSchedule/<%=result_schedule[0].id_mk%>" method="post">
           <select name="schedule" required>
             <option value="">Pilih Schedule</option>
-            <% result_schedule.forEach((row_schedule, index) => { %>
-            <option value="<%= row_schedule.tanggal%>">Pertemuan Ke- <%=index+1%>, <%= moment(row_schedule.tanggal).format('dddd, D/MM/YYYY')%></option></a>
+            <%
+						result_schedule.forEach((row_schedule, index) => {
+							let day = '';
+							switch(moment(row_schedule.tanggal).format('dddd')){
+                  case 'Sunday':
+                    day = "Minggu"; break;
+                  case 'Monday':
+                    day = "Senin"; break;
+                  case 'Tuesday':
+                    day = 'Selasa'; break;
+                  case 'Wednesday':
+                    day = 'Rabu'; break;
+                  case 'Thursday':
+                    day = 'Kamis'; break;
+                  case 'Friday':
+                    day = "Jum'at"; break;
+                  default:
+                    day = 'Sabtu'; break;
+              } %>
+            <option value="<%= row_schedule.tanggal%>">Pertemuan Ke- <%=index+1%>, <%= day%>, <%= moment(row_schedule.tanggal).format('D/MM/YYYY')%></option></a>
             <% }) %>
           </select>
           <input type="submit" value="Submit">
         </form>
-	    
+				<% if (result_mahasiswa) { %>
+				<table border="1">
+					<thead>
+						<th>No.</th>
+						<th>Nama</th>
+						<th>status</th>
+						<th>Option</th>
+					</thead>
+					<tbody>
+						<% result_mahasiswa.forEach((rowMHS, index) => { %>
+							<tr>
+								<td><%= index+1 %></td>
+								<td><%= rowMHS.Mahasiswa.name %></td>
+								<td><%= rowMHS.status %></td>
+								<td>
+									<form action="/absenmk/update/<%= rowMHS.id %>" method="post">
+										<input type="text" name="tanggal" value="<%= date %>" hidden>
+										<input type="text" name="id_mahasiswa" value="<%= rowMHS.id_mahasiswa %>" hidden>
+										<input type="text" name="email" value="<%= rowMHS.Mahasiswa.email %>" hidden>
+										<select name="batasTelat">
+											<option value="<%= moment(date).add(15, 'minutes').format('hh:mm A') %>">15 Menit</option>
+											<option value="<%= moment(date).add(30, 'minutes').format('hh:mm A') %>">30 Menit</option>
+											<option value="<%= moment(date).add(45, 'minutes').format('hh:mm A') %>">45 Menit</option>
+											<option value="<%= moment(date).add(60, 'minutes').format('hh:mm A') %>">60 Menit</option>
+										</select>
+										<input type="submit" value="Absen" <%= (rowMHS.status || date > new Date()) ? 'disabled' : '' %>>
+									</form>
+								</td>
+							</tr>
+						<% }) %>
+					</tbody>
+				</table>
+				<% } %>
 	    </div>
 
 		 <% include ../partials/footer %>

@@ -39,8 +39,8 @@
                   default:
                     day = 'Sabtu'; break;
               } %>
-              <td><%= day %>, <%= moment(row.courseDate).format('d MMMM Y') %></td>
-              <td><%= moment(row.courseDate).subtract(7, 'hours').format('hh:mm A') %></td>
+              <td><%= day %>, <%= moment(row.courseDate).format('D MMMM Y') %></td>
+              <td><%= moment(row.courseDate).format('hh:mm A') %></td>
               <% if (row.status) { %>
                 <td><%= row.status %></td>
               <% } else { %>

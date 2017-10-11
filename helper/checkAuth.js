@@ -1,5 +1,6 @@
 module.exports=function checkAuth (req, res, next) {
-	if (!req.session.isLogin) {
+	console.log('---- chek auth', req.session)
+	if (!req.session.id_dosen) {
 		res.redirect('/login')
 		return;
 	}

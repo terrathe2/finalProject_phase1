@@ -4,8 +4,7 @@ const Model = require('../models')
 const CheckAuth = require('../helper/checkAuth')
 const Enkrip = require('../helper/enkrip')
 
-router.get('/login', (req, res) => {
-
+router.get('/', (req, res) => {
 	res.render('pages/login', {message:''})
 })
 
@@ -27,7 +26,7 @@ router.get('/login', (req, res) => {
 // 	})
 // })
 
-router.post('/login', (req, res) =>{
+router.post('/', (req, res) =>{
 	Model.Dosen.findOne({where :{username : req.body.username}}).then(result =>{
 		if(result){
 			if(result.password === req.body.password){
