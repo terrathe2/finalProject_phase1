@@ -20,10 +20,13 @@ const rekap = require('./routes/rekap')
 // const teacher = require('./routes/teacher')
 // const student = require('./routes/student')
 const login = require('./routes/login')
+const absenmk = require('./routes/absenmk')
 
 app.use('/', index)
 app.use('/', rekap)
-// app.use('/login', login)
+app.use('/', absenmk)
+app.use('/', login)
+
 
 // app.use('/teacher', teacher)
 
