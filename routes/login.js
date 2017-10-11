@@ -4,7 +4,7 @@ const Model = require('../models')
 const CheckAuth = require('../helper/checkAuth')
 const Enkrip = require('../helper/enkrip')
 
-router.get('/', (req, res) => {
+router.get('/login', (req, res) => {
 
 	res.render('pages/login', {message:''})
 })
@@ -27,12 +27,14 @@ router.get('/', (req, res) => {
 // 	})
 // })
 
-router.post('/', (req, res) =>{
+router.post('/login', (req, res) =>{
 	Model.Dosen.findOne({where :{username : req.body.username}}).then(result =>{
 		if(result){
 			if(result.password === req.body.password){
+				req.session.id_mk = result.id_mk
+				req.session.id_dosen = result.id
 				router.use(CheckAuth)
-				res.redirect('/index')
+				res.redirect('/')
 			}else{
 				res.render('pages/login', {message: 'password anda salah'})
 			}
@@ -48,7 +50,7 @@ router.get('/signup', (req, res) =>{
 
 router.get('/logout', (req, res, next)=>{
 	req.session.destroy()
-	res.redirect('/login')
+	res.redirect('/')
 })
 
 router.post('/signup', (req, res) =>{

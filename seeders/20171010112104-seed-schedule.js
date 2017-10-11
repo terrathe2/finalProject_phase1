@@ -36,35 +36,35 @@ module.exports = {
       tanggal : new Date("2017-11-2 17:00:000")
     },
     {
-      id_mk : 1,
+      id_mk : 4,
       tanggal : new Date("2017-10-10 17:00:000")
     },
     {
-      id_mk : 1,
+      id_mk : 4,
       tanggal : new Date("2017-10-17 17:00:000")
     },
     {
-      id_mk : 1,
+      id_mk : 4,
       tanggal : new Date("2017-10-24 17:00:000")
     },
     {
-      id_mk : 1,
+      id_mk : 4,
       tanggal : new Date("2017-10-31 17:00:000")
     },
     {
-      id_mk : 2,
+      id_mk : 5,
       tanggal : new Date("2017-10-11 20:00:000")
     },
     {
-      id_mk : 2,
+      id_mk : 5,
       tanggal : new Date("2017-10-18 20:00:000")
     },
     {
-      id_mk : 2,
+      id_mk : 5,
       tanggal : new Date("2017-10-25 20:00:000")
     },
     {
-      id_mk : 2,
+      id_mk : 5,
       tanggal : new Date("2017-11-1 20:00:000")
     }])
   },

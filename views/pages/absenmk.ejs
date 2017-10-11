@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <% include ../partials/head %>
+</head>
+<body class='container'>
+	<main>
+		 <% include ../partials/header %>
+	    <div class="row">
+	    <h1><%=id_dosen%></h1>
+	    
+	    <form action="/selectSchedule/<%=result_schedule[0].id_mk%>" method="post">
+          <select name="schedule" required>
+            <option value="">Pilih Schedule</option>
+            <% result_schedule.forEach((row_schedule, index) => { %>
+            <option value="<%= row_schedule.tanggal%>">Pertemuan Ke- <%=index+1%>, <%= moment(row_schedule.tanggal).format('dddd, D/MM/YYYY')%></option></a>
+            <% }) %>
+          </select>
+          <input type="submit" value="Submit">
+        </form>
+	    
+	    </div>
+
+		 <% include ../partials/footer %>
+	</main>
+</body>
+</html>

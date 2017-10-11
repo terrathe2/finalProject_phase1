@@ -7,8 +7,8 @@ const Model = require('../models')
 router.get('/', (req, res) => {
 	// router.use(CheckAuth)
 
-	Model.Matakuliah.findAll({include : [Model.Mahasiswa]},{where : {id : 3}}).then(result =>{
-		res.render('pages/index', {role : req.session.role})
+	Model.Matakuliah.findAll({include : [Model.Mahasiswa]},{where : {id : 5}}).then(result =>{
+		res.render('pages/index', {id_dosen : req.session.id_dosen})
 	})
 })
 

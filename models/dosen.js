@@ -4,12 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     username: DataTypes.STRING,
     password: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
-  });
+  })
+
+  Dosen.associate = model =>{
+     Dosen.belongsTo(model.Matakuliah, {foreignKey : 'id_mk'})   
+  }
   return Dosen;
 };

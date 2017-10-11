@@ -6,7 +6,7 @@ module.exports = {
         'MK_Mahasiswas',
         'courseDate',
         {
-          type: Sequelize.DATE,
+          type: 'TIMESTAMP',
           allowNull: false
         }
       )
