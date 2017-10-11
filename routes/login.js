@@ -46,12 +46,12 @@ router.post('/login', (req, res) =>{
 // router.get('/signup', (req, res) =>{
 // 	res.render('signup')
 // })
-//
-// router.get('/logout', (req, res, next)=>{
-// 	req.session.destroy()
-// 	res.redirect('/')
-// })
-//
+
+router.get('/logout', (req, res, next)=>{
+	req.session.destroy()
+	res.redirect('/')
+})
+
 // router.post('/signup', (req, res) =>{
 //
 // 	let text =''
