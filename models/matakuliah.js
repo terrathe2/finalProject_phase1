@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Matakuliah = sequelize.define('Matakuliah', {
-    mk_name: DataTypes.STRING,
+    mk_name: DataTypes.STRING
   })
 
   Matakuliah.associate = model =>{
