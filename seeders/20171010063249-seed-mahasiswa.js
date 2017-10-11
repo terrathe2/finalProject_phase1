@@ -19,7 +19,19 @@ module.exports = {
       updatedAt : new Date()
     },{
       name : 'redha putra',
-      email : 'redhaimutnngetsngets@gmail.com',
+      email : 'terrathe2@gmail.com',
+      createdAt : new Date(),
+      updatedAt : new Date()
+    },
+    {
+      name : 'zuhri nurhuda',
+      email : 'putra.redha@gmail.com',
+      createdAt : new Date(),
+      updatedAt : new Date()
+    },
+    {
+      name : 'syaipul',
+      email : 'ipung.anwar1@gmail.com',
       createdAt : new Date(),
       updatedAt : new Date()
     }])
