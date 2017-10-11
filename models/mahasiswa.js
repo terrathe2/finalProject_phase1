@@ -9,5 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     Mahasiswa.hasMany(model.MK_Mahasiswa, {foreignKey : 'id_mahasiswa'})
     Mahasiswa.belongsToMany(model.Matakuliah, {through: 'MK_Mahasiswa', foreignKey : 'id_mahasiswa'})
   }
+
   return Mahasiswa;
 };

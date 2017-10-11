@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <% include ../partials/head %>
+</head>
+<body class='container'>
+	<main>
+		 <% include ../partials/header %>
+	    <div class="row">
+        <form action="/rekap" method="post">
+          <select name="matakuliah" required>
+            <option value="">Choose Mata Kuliah</option>
+            <% dataMK.forEach((row) => { %>
+            <option value="<%= row.id%>"><%= row.mk_name%></option></a>
+            <% }) %>
+          </select>
+          <input type="submit" value="Submit">
+        </form><br>
+        <% if (dataMKMHS) { %>
+					<h2>List Mahasiswa matakuliah <%= dataMKMHS.mk_name%></h2>
+					<% dataMKMHS.Mahasiswas.forEach((row) => { %>
+						<a href="/rekap/absen/<%= row.id %>/<%= dataMKMHS.id %>"><div style="padding:10px;margin:5px;float:left;"><%= row.name%></div></a>
+					<% }) %>
+				<% } %>
+	    </div>
+
+		 <% include ../partials/footer %>
+	</main>
+</body>
+</html>

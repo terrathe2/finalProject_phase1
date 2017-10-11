@@ -1,28 +1,29 @@
 const express = require('express');
-const session = require('express-session')
 const app = express();
+const ejs = require('ejs');
+const session = require('express-session')
 const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({extended: true}))
-app.set('view engine','ejs')
-app.use(express.static(__dirname + '/views'))
 
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public'))
 app.use(session({
 	secret: 'berhasil',
 	resave: false,
 	saveUninitialized: true
 }))
+app.set('view engine','ejs')
 
 const index = require('./routes/index')
+const rekap = require('./routes/rekap')
 // const subject = require('./routes/subject')
 // const teacher = require('./routes/teacher')
 // const student = require('./routes/student')
 const login = require('./routes/login')
 
-
-
-app.use('/login', login)
-
-app.use('/index', index)
+app.use('/', index)
+app.use('/', rekap)
+// app.use('/login', login)
 
 // app.use('/teacher', teacher)
 

@@ -3,7 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   var MK_Mahasiswa = sequelize.define('MK_Mahasiswa', {
     id_mk: DataTypes.INTEGER,
     id_mahasiswa: DataTypes.INTEGER,
-    status: DataTypes.STRING
+    status: DataTypes.STRING,
+    courseDate: DataTypes.DATE
   })
 
   MK_Mahasiswa.associate = model =>{

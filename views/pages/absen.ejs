@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <% include ../partials/head %>
+</head>
+<body class='container'>
+	<main>
+		 <% include ../partials/header %>
+	    <div class="row">
+        <table border="1">
+          <thead>
+            <th>No.</th>
+            <th>Pertemuan</th>
+            <th>Tanggal</th>
+            <th>Waktu</th>
+            <th>Kehadiran</th>
+          </thead>
+          <tbody>
+          <% let arrPertemuan = ['Pertama', 'Kedua', 'Ketiga', 'Keempat', 'Kelima', 'Keenam', 'Ketujuh', 'Kedelapan']%>
+          <% dataMKMHS.forEach((row, index) => { %>
+            <tr>
+              <td><%= index+1 %>.</td>
+              <td><%= arrPertemuan[index] %></td>
+              <% let day = '';
+              switch(moment(row.courseDate).format('dddd')){
+                  case 'Sunday':
+                    day = "Minggu"; break;
+                  case 'Monday':
+                    day = "Senin"; break;
+                  case 'Tuesday':
+                    day = 'Selasa'; break;
+                  case 'Wednesday':
+                    day = 'Rabu'; break;
+                  case 'Thursday':
+                    day = 'Kamis'; break;
+                  case 'Friday':
+                    day = "Jum'at"; break;
+                  default:
+                    day = 'Sabtu'; break;
+              } %>
+              <td><%= day %>, <%= moment(row.courseDate).format('d MMMM Y') %></td>
+              <td><%= moment(row.courseDate).subtract(7, 'hours').format('hh:mm A') %></td>
+              <% if (row.status) { %>
+                <td><%= row.status %></td>
+              <% } else { %>
+                <td>Not Assigned</td>
+              <% } %>
+            </tr>
+  				<% }) %>
+          </tbody>
+        </table>
+	    </div>
+
+		 <% include ../partials/footer %>
+	</main>
+</body>
+</html>
