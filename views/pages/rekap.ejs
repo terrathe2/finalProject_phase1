@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Absensi</title>
+
     <% include ../partials/head %>
+
 </head>
 <body class='container'>
 	<main>
 		 <% include ../partials/header %>
-	    <div class="row">
+
+	    <div class="jumbotron">
+
         <form action="/rekap" method="post">
+        
           <select name="matakuliah" required>
             <option value="">Choose Mata Kuliah</option>
             <% dataMK.forEach((row) => { %>

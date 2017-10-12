@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Absensi Mahasiswa</title>
+    <% include ../partials/head %>
+</head>
+<body class='container'>
+	<main>
+		 <% include ../partials/header %>
+
+	    <div class="jumbotron">
+	    <form action="/editMhs/addDataMhs%>" method="POST">
+                <input type="text" name="name" placeholder="Nama Mahasiswa">
+                <input type="email" name="email" placeholder="Email Mahasiswa">
+                <button type="submit">Submit</button>
+         </form>
+         <br>
+	    <div class="table-responsive">
+				<table border="1" class="table">
+					<thead>
+						<th>No.</th>
+						<th>Nama</th>
+						<th>Email</th>
+						<th>Option</th>
+					</thead>
+					<tbody>
+						<%resultMhs.forEach((rowMhs, index) =>{%>
+							<tr>
+								<td><%= index+1%></td>
+								<td><%= rowMhs.name%></td>
+								<td><%= rowMhs.email%></td>
+								<td>
+									<a href="/editMhs/editDataMhs/<%= rowMhs.id%>">Edit</a>
+                                	<a href="/editMhs/deleteDataMhs/<%= rowMhs.id%>">Delete</a> 
+                            	</td>
+							</tr>
+						<%})%>
+					</tbody>
+				</table>
+			</div>
+	    </div>
+
+		 <% include ../partials/footer %>
+	</main>
+</body>
+</html>

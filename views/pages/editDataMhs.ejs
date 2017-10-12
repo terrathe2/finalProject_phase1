@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <% include ../partials/head %>
+</head>
+<body class='container'>
+	<main>
+		 <% include ../partials/header %>
+
+	    <div class="jumbotron">
+	    <form action="/editMhs/editDataMhs/<%= resultMhs.id%>" method="POST">
+                <input type="text" value="<%= resultMhs.name%>" name="name">
+                <input type="email" value="<%= resultMhs.email%>" name="email">
+                <button type="submit">Submit</button>
+         </form>
+	    </div>
+
+		 <% include ../partials/footer %>
+	</main>
+</body>
+</html>

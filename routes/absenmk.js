@@ -4,10 +4,9 @@ const Model = require('../models')
 const moment = require('moment')
 const emailNotif = require('../helper/emailNotif')
 const statusHelp = require('../helper/status')
-// const CheckAuth = require('../helper/checkAuth')
+const CheckAuth = require('../helper/checkAuth')
 
-router.get('/', (req, res) => {
-	// router.use(CheckAuth)
+router.get('/', CheckAuth, (req, res) => {
 	Model.Dosen.findOne({include : [Model.Matakuliah]},{where : {id_mk : req.session.id_mk}}).then(result =>{
 		Model.Schedule.findAll({where : {id_mk : result.id_mk}}).then(result_schedule =>{
 			res.render('pages/absenmk', {result_dosen : result, result_schedule : result_schedule, result_mahasiswa: null, id_dosen : req.session.id_dosen, moment : moment, date: null})
@@ -18,7 +17,7 @@ router.get('/', (req, res) => {
 	})
 })
 
-router.post('/selectSchedule/:idMk', (req, res) =>{
+router.post('/selectSchedule/:idMk', CheckAuth, (req, res) =>{
 	let date = new Date(req.body.schedule);
 	let datePostgres = moment(date).add(7,'Hours')
 
@@ -33,7 +32,7 @@ router.post('/selectSchedule/:idMk', (req, res) =>{
 	})
 })
 
-router.post("/update/:id", (req, res) => {
+router.post("/update/:id", CheckAuth, (req, res) => {
 	let date = new Date(req.body.tanggal);
 	let datePostgres = moment(date).add(7, 'hours')
 	let batasTelat = req.body.batasTelat;
