@@ -18,11 +18,7 @@ module.exports = {
       },
       id_mahasiswa: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'Mahasiswas',
-          key: 'id'
-        }
+        allowNull: false
       },
       status: {
         type: Sequelize.STRING

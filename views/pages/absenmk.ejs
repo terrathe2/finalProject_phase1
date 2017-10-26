@@ -14,7 +14,7 @@
             	<option value="">Pilih Schedule</option>
             	<%
 					result_schedule.forEach((row_schedule, index) => {
-					
+
 					let day = '';
 					switch(moment(row_schedule.tanggal).format('dddd')){
                   	case 'Sunday':
@@ -59,10 +59,10 @@
 										<input type="text" name="id_mahasiswa" value="<%= rowMHS.id_mahasiswa %>" hidden>
 										<input type="text" name="email" value="<%= rowMHS.Mahasiswa.email %>" hidden>
 										<select name="batasTelat">
-											<option value="<%= moment(date).add(15, 'minutes').format('hh:mm A') %>">15 Menit</option>
-											<option value="<%= moment(date).add(30, 'minutes').format('hh:mm A') %>">30 Menit</option>
-											<option value="<%= moment(date).add(45, 'minutes').format('hh:mm A') %>">45 Menit</option>
-											<option value="<%= moment(date).add(60, 'minutes').format('hh:mm A') %>">60 Menit</option>
+											<option value="<%= moment(date).add(15, 'minutes').format('YYYY-MM-D hh:mm A') %>">15 Menit</option>
+											<option value="<%= moment(date).add(30, 'minutes').format('YYYY-MM-D hh:mm A') %>">30 Menit</option>
+											<option value="<%= moment(date).add(45, 'minutes').format('YYYY-MM-D hh:mm A') %>">45 Menit</option>
+											<option value="<%= moment(date).add(60, 'minutes').format('YYYY-MM-D hh:mm A') %>">60 Menit</option>
 										</select>
 										<input type="submit" value="Absen" <%= (rowMHS.status || date > new Date()) ? 'disabled' : '' %>>
 									</form>
@@ -80,4 +80,3 @@
 	</main>
 </body>
 </html>
-

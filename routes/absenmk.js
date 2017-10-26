@@ -36,10 +36,10 @@ router.post("/update/:id", CheckAuth, (req, res) => {
 	let date = new Date(req.body.tanggal);
 	let datePostgres = moment(date).add(7, 'hours')
 	let batasTelat = req.body.batasTelat;
-	let batasAlpha = moment(date).add(120, 'minutes').format("hh:mm A")
+	let batasAlpha = moment(date).add(120, 'minutes').format("YYYY-MM-D hh:mm A")
 
 	let status = statusHelp(batasTelat, batasAlpha);
-	
+
 	Model.MK_Mahasiswa.update({status: status}, {where: {id: req.params.id}}).then(() => {
 		Model.MK_Mahasiswa.findAll({where: {id_mahasiswa: parseInt(req.body.id_mahasiswa), id_mk: req.session.id_mk}, order: [["courseDate","ASC"]]}).then((rowsAbsen) => {
 			let count = 0;
@@ -47,12 +47,15 @@ router.post("/update/:id", CheckAuth, (req, res) => {
 			rowsAbsen.forEach((row) => {
 				if (row.status === "Telat") {
 					count++
+					if (count % 4 === 0) {
+						countAlpha++
+					}
 				} else if (row.status === "Alpha") {
 					countAlpha++
 				}
 			})
 
-			if (count % 3 === 0 && status === "Telat" || count % 3 === 0 && status === "Alpha") {
+			if (count % 3 === 0|| countAlpha % 3 === 0) {
 				emailNotif(status, req.body.email);
 			}
 		 Model.Dosen.findOne({include : [Model.Matakuliah]},{where : {id_mk : req.session.id_mk}}).then(result =>{

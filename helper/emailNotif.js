@@ -21,8 +21,8 @@ function mail(status, email) {
       to: email,
       subject: 'Late Notification',
       html:
-      '<h2>You already late 3 times, please..</h2>' +
-      '<p><img src="cid:dontlate@unique.com" width="300px" /></p>',
+      '<h2>Tong, Bujug lu telat mulu.. telat lg gue alphain ye</h2>' +
+      '<p><img src="cid:dontlate@unique.com" width="400px" /></p>',
       attachments: [
             // File Stream attachment
             {
@@ -38,8 +38,8 @@ function mail(status, email) {
       to: email,
       subject: 'Alpha Notification',
       html:
-      '<h2>You already alpha 3 times, please..</h2>'+
-      '<p><img src="cid:absent@unique.com" width="300px" /></p>',
+      '<h2>Et dah ga masuk mulu.. DO dr matkul ye.. tha tha</h2>'+
+      '<p><img src="cid:absent@unique.com" width="400px" /></p>',
       attachments: [
             // File Stream attachment
             {
